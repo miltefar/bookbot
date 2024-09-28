@@ -13,14 +13,17 @@ def counting_words(book_content):
 
 def counting_letters(book_content):
     my_string = book_content.lower()
-    my_dict = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     lc_dict = {}
 
     for char in my_string:
-      if char in my_dict.i == True and lc_dict.i > 0:
-          lc_dict.i += 1
-      elif i in my_dict.i == True and lc_dict.i == 0:
-          lc_dict.i = 1
+
+      if char.isalpha():
+          
+          if char in lc_dict:
+
+            lc_dict[char] += 1
+          else:
+            lc_dict[char] = 1
 
     return lc_dict
 
@@ -29,9 +32,14 @@ def sorted_on(lc_dict):
     return sorted_dict
 
 def main():
-  #print("--- Begin report of books/frankenstein.txt ---")
-  #for key, value in lc_dict.items()
-  #  print(f"The '{key}' character was found {value} times.")
+
   get_book()
-  print(sorted_on(counting_letters(get_book())))
+  dictionary = sorted_on(counting_letters(get_book()))
+  print("--- Begin report of books/frankenstein.txt ---")
+  for key in dictionary :
+    value = dictionary[key]
+    print(f"The '{key}' character was found {value} times.")
+
+  print("--- End report ---")
+
 main()
